@@ -7,6 +7,7 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('lte/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
@@ -121,10 +122,11 @@
 
 <!-- jQuery -->
 <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
+<script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('lte/dist/js/adminlte.min.js')}}"></script>
-
+@yield('javascript')
 </body>
 </html>

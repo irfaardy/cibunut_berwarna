@@ -60,7 +60,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('lte/index2.html')}}" class="nav-link">
+                <a href="{{url('admin/berita')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Berita</p>
                 </a>
@@ -114,7 +114,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{url('admin/pengguna')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Pengguna

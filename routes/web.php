@@ -18,3 +18,15 @@ Route::get('/', 'LandingPageController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin/pengguna', 'PenggunaController@index')->name('pengguna');
+Route::get('admin/pengguna/create', 'PenggunaController@create')->name('pengguna.create');
+Route::get('admin/pengguna/edit/{id}', 'PenggunaController@edit')->name('pengguna.edit');
+Route::post('admin/pengguna/save', 'PenggunaController@save')->name('pengguna.save');
+Route::post('admin/pengguna/update', 'PenggunaController@update')->name('pengguna.update');
+
+Route::get('admin/berita', 'BeritaController@index')->name('berita');
+Route::get('admin/berita/create', 'BeritaController@create')->name('berita.create');
+Route::get('admin/berita/edit/{id}', 'BeritaController@edit')->name('berita.edit');
+Route::post('admin/berita/save', 'BeritaController@save')->name('berita.save');
+Route::post('admin/berita/update', 'BeritaController@update')->name('berita.update');
+Route::get('admin/berita/delete', 'BeritaController@delete')->name('berita.delete');
