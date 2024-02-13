@@ -38,12 +38,23 @@ class BeritaController extends Controller
     }
     public function save(Request $request)
     {
-    
+        $request->validate([
+
+            'file' => 'required|image|max:2048',
+
+        ]);
+        $imageName = time().'_'.\Str::kebab($request->judul).$request->file->extension();  
+        $request->file->move(public_path('images'), $imageName);
         $berita = new Berita();
-        $berita->name = $request->name;
-        $berita->email = $request->email;
-        $berita->password = bcrypt($request->password);
-        $berita->level = $request->level;
+        $berita->title = $request->judul;
+        $berita->description = $request->deskripsi;
+        $berita->tags = 'cibunut berwarna,berwarna';
+        $berita->thumbnail = $imageName ;
+        $berita->thumbnail_sm = $imageName ;
+        $berita->seo_description = strip_tags($request->description) ;
+        $berita->seo_url = date('Ymd').'-'.\Str::kebab($request->judul) ;
+        $berita->seo_title = $request->judul;
+        $berita->created_by = auth()->user()->id;
         $berita->save();
 
         return redirect(url('admin/pengguna'))->with(['message_success' => "berhasil menambahkan pengguna"]);
@@ -52,8 +63,24 @@ class BeritaController extends Controller
     {
     
         $berita = User::where('id',$request->id)->first();
-        $berita->name = $request->name;
-        $berita->email = $request->email;
+        $berita->title = $request->judul;
+        $berita->description = $request->deskripsi;
+        $berita->tags = $request->tags;
+        if(!empty($request->file))
+        {
+            $imageName = time().'_'.\Str::kebab($request->judul).$request->image->extension();  
+            $request->image->move(public_path('images'), $imageName);
+            $berita->thumbnail = $imageName ;
+            $berita->thumbnail_sm = $imageName ;
+
+        }
+        $berita->seo_description = strip_tags($request->description) ;
+        if($request->judul != $berita->title)
+        {
+            $berita->seo_url = date('Ymd').'-'.\Str::kebab($request->judul);
+            $berita->seo_title = $request->judul;
+        }
+        $berita->created_by = auth()->user()->id;
         $user->save();
 
         return redirect(url('admin/pengguna'))->with(['message_success' => "berhasil mengubah pengguna"]);

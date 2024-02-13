@@ -8,10 +8,16 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap-tagsinput-main/dist/bootstrap-tagsinput.css')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('lte/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('lte/dist/css/adminlte.min.css')}}">
+  <style>
+    .ck-editor__editable_inline:not(.ck-comment__input *) {
+    height: 400px;
+    overflow-y: auto;
+}</style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -97,6 +103,25 @@
 
     <!-- Main content -->
     <section class="content">
+      @if (count($errors) > 0)
+
+      <div class="alert alert-danger">
+
+          <strong>Whoops!</strong> There were some problems with your input.
+
+          <ul>
+
+              @foreach ($errors->all() as $error)
+
+                  <li>{{ $error }}</li>
+
+              @endforeach
+
+          </ul>
+
+      </div>
+
+  @endif
         @yield('content')
       <!-- /.card -->
 
@@ -127,6 +152,8 @@
 <script src="{{asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('lte/dist/js/adminlte.min.js')}}"></script>
+<script src="{{asset('assets/vendor/bootstrap-tagsinput-main/dist/bootstrap-tagsinput.min.js')}}"></script>
+<script src="{{asset('assets/vendor/ckeditor/build/ckeditor.js')}}"></script>
 @yield('javascript')
 </body>
 </html>

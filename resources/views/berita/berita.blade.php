@@ -36,6 +36,7 @@
                     <td>{{$berita->title}}</td>
                     <td>{{$berita->thumbnail}}</td>
                     <td>{{$berita->tags}}</td>
+                    <td>{{$berita->created_by}}</td>
                     <td>{{$berita->created_at}}</td>
                     <td><a href="{{url('admin/pengguna/edit/'.$berita->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i> Ubah</a></td>
                 </tr>
