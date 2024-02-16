@@ -29,4 +29,12 @@ Route::get('admin/berita/create', 'BeritaController@create')->name('berita.creat
 Route::get('admin/berita/edit/{id}', 'BeritaController@edit')->name('berita.edit');
 Route::post('admin/berita/save', 'BeritaController@save')->name('berita.save');
 Route::post('admin/berita/update', 'BeritaController@update')->name('berita.update');
-Route::get('admin/berita/delete', 'BeritaController@delete')->name('berita.delete');
+Route::get('admin/berita/delete/{id}', 'BeritaController@delete')->name('berita.delete');
+
+
+Route::get('admin/produk', 'ProdukController@index')->name('produk');
+Route::get('admin/produk/create', 'ProdukController@create')->name('produk.create');
+Route::get('admin/produk/edit/{id}', 'ProdukController@edit')->name('produk.edit');
+Route::post('admin/produk/save', 'ProdukController@save')->name('produk.save');
+Route::post('admin/produk/update', 'ProdukController@update')->name('produk.update');
+Route::get('admin/produk/delete/{id}', 'ProdukController@delete')->name('produk.delete');

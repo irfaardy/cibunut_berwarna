@@ -1,13 +1,13 @@
 @extends('layouts.dashboard_master')
 
-@section('title','Kelola Berita')
+@section('title','Kelola Produk')
 @section('content')
 
 
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Kelola Berita</h3>
+        <h3 class="card-title">Kelola Produk</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -19,27 +19,28 @@
         </div>
         </div>
         <div class="card-body">
-            <a href="{{url('admin/berita/create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Berita</a>
+            <a href="{{url('admin/produk/create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Produk</a>
             <hr>
         <table class="table table-bordered table-stripped" id="pengguna">
             <thead>
-                <th>Judul</th>
-                <th>Thumbnail</th>
+                <th>Nama Produk</th>
+                <th>Deskripsi</th>
                 <th>Tags</th>
                 <th>Dibuat Oleh</th>
                 <th>Dibuat Pada</th>
                 <th>Aksi</th>
             </thead>
             <tbody>
-                @foreach($berita as $berita)
+                @foreach($produk as $produk)
                 <tr>
-                    <td>{{$berita->title}}</td>
-                    <td> <img src="{{url('images/'.$berita->thumbnail)}}"" width="100px"></td>
-                    <td>{{$berita->tags}}</td>
-                    <td>{{$berita->user->name}}</td>
-                    <td>{{$berita->created_at}}</td>
-                    <td><a href="{{url('admin/berita/edit/'.$berita->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i> Ubah</a>
-                        <a href="{{url('admin/berita/delete/'.$berita->id)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a></td>
+                    <td>{{$produk->nama_produk}}</td>
+                    <td>{{Str::limit(strip_tags($produk->deskripsi),120)}}</td>
+                    <td>{{$produk->tags}}</td>
+                    <td>{{$produk->user->name}}</td>
+                    <td>{{$produk->created_at}}</td>
+                   
+                    <td><a href="{{url('admin/produk/edit/'.$produk->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i> Ubah</a>
+                        <a href="{{url('admin/produk/delete/'.$produk->id)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -54,7 +54,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('lte/index.html')}}" class="nav-link">
+                <a href="{{url('admin/produk')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Produk</p>
                 </a>

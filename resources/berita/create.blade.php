@@ -1,13 +1,13 @@
 @extends('layouts.dashboard_master')
 
-@section('title','Edit Produk')
+@section('title','Tambah Berita')
 @section('content')
 
 
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Edit Produk</h3>
+        <h3 class="card-title">Tambah Berita</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -19,42 +19,54 @@
         </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{url('admin/produk/update')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{url('admin/berita/save')}}" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                            Nama Produk
+                            Judul
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="nama_produk" class="form-control" value="{{$produk->nama_produk}}" required>
+                            <input type="text" name="judul" class="form-control" required>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                           Dekripsi Produk
+                            Isi Berita
                         </div>
                         <div class="col-md-12">
-                           <textarea name="deskripsi" rows="30" id="description" class="form-control">{{$produk->deskripsi}}</textarea>
+                           <textarea name="deskripsi" rows="30" id="description" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                            Gambar Produk
+                            Tag
                         </div>
 
                         <div class="col-md-6">
-                           <img src="{{url('images/'.$produk->thumbnail)}}" width="200px">
-                           <input type="file" name="file" class="form-control" >
-                           
+                            <div class="u-tagsinput">
+                           <input type="text" name="tags" class="form-control" data-role="tagsinput">
+                            </div>
                         </div>
                     </div>
                 </div>
-               
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            Thumbnail
+                        </div>
+
+                        <div class="col-md-6">
+                        
+                        <input type="file" name="file" class="form-control">
+                        
+                        </div>
+                    </div>
+                </div>
                 </div>
             
                 <hr>

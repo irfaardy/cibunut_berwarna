@@ -43,7 +43,7 @@ class BeritaController extends Controller
             'file' => 'required|image|max:2048',
 
         ]);
-        $imageName = time().'_'.\Str::kebab($request->judul).$request->file->extension();  
+        $imageName = time().'_'.\Str::kebab($request->judul).'.'.$request->file->extension();  
         $request->file->move(public_path('images'), $imageName);
         $berita = new Berita();
         $berita->title = $request->judul;
@@ -57,18 +57,18 @@ class BeritaController extends Controller
         $berita->created_by = auth()->user()->id;
         $berita->save();
 
-        return redirect(url('admin/pengguna'))->with(['message_success' => "berhasil menambahkan pengguna"]);
+        return redirect(url('admin/berita'))->with(['message_success' => "berhasil menambahkan berita"]);
     }
     public function update(Request $request)
     {
     
-        $berita = User::where('id',$request->id)->first();
+        $berita = Berita::where('id',$request->id)->first();
         $berita->title = $request->judul;
         $berita->description = $request->deskripsi;
         $berita->tags = $request->tags;
         if(!empty($request->file))
         {
-            $imageName = time().'_'.\Str::kebab($request->judul).$request->image->extension();  
+            $imageName = time().'_'.\Str::kebab($request->judul).'.'.$request->image->extension();  
             $request->image->move(public_path('images'), $imageName);
             $berita->thumbnail = $imageName ;
             $berita->thumbnail_sm = $imageName ;
@@ -81,8 +81,16 @@ class BeritaController extends Controller
             $berita->seo_title = $request->judul;
         }
         $berita->created_by = auth()->user()->id;
-        $user->save();
+        $berita->save();
 
-        return redirect(url('admin/pengguna'))->with(['message_success' => "berhasil mengubah pengguna"]);
+        return redirect(url('admin/berita'))->with(['message_success' => "berhasil mengubah berita"]);
+    }
+
+    public function delete(Request $request)
+    {
+    
+        $berita = Berita::where('id',$request->id)->delete();
+
+        return redirect(url('admin/berita'))->with(['message_success' => "berhasil menghapus berita"]);
     }
 }
