@@ -38,3 +38,7 @@ Route::get('admin/produk/edit/{id}', 'ProdukController@edit')->name('produk.edit
 Route::post('admin/produk/save', 'ProdukController@save')->name('produk.save');
 Route::post('admin/produk/update', 'ProdukController@update')->name('produk.update');
 Route::get('admin/produk/delete/{id}', 'ProdukController@delete')->name('produk.delete');
+
+
+Route::get('admin/konten/header', 'KontenHeaderController@index');
+Route::post('admin/konten/update', 'KontenHeaderController@update');

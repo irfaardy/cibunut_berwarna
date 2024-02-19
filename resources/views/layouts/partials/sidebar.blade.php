@@ -65,16 +65,9 @@
                   <p>Berita</p>
                 </a>
               </li>
-             
-             
+            
               <li class="nav-item">
-                <a href="{{asset('lte/index3.html')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Menu Landing</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{asset('lte/index2.html')}}" class="nav-link">
+                <a href="{{asset('admin/konten/header')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ubah Header</p>
                 </a>
