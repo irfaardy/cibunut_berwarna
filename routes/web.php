@@ -42,3 +42,6 @@ Route::get('admin/produk/delete/{id}', 'ProdukController@delete')->name('produk.
 
 Route::get('admin/konten/header', 'KontenHeaderController@index');
 Route::post('admin/konten/update', 'KontenHeaderController@update');
+
+Route::get('admin/konten/about', 'KontenAboutController@index');
+Route::post('admin/konten/update/about', 'KontenAboutController@update');
