@@ -45,3 +45,6 @@ Route::post('admin/konten/update', 'KontenHeaderController@update');
 
 Route::get('admin/konten/about', 'KontenAboutController@index');
 Route::post('admin/konten/update/about', 'KontenAboutController@update');
+
+Route::get('admin/seo/landing', 'SeoController@index');
+Route::post('admin/seo/landing/update', 'SeoController@update');
