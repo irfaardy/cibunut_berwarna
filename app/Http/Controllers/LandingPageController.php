@@ -10,6 +10,8 @@ use Artesaos\SEOTools\Facades\SEOTools;
 
 use Illuminate\Http\Request;
 use App\Konten;
+use App\Produk;
+use App\Berita;
 use App\Seo;
 
 class LandingPageController extends Controller
@@ -48,7 +50,8 @@ class LandingPageController extends Controller
                 'tag' => $seo->keywords
             ]);
 
-
-        return view('landing')->with(['konten' => $konten]);
+        $berita = Berita::limit(6)->orderBy('created_at','desc')->get();
+        $produk = Produk::limit(6)->orderBy('created_at','desc')->get();
+        return view('landing')->with(['konten' => $konten,'produk' => $produk,'berita' => $berita]);
     }
 }

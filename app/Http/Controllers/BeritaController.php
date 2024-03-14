@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Berita;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+use Artesaos\SEOTools\Facades\SEOTools;
+
 class BeritaController extends Controller
 {
     /**
@@ -21,9 +28,46 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function show($url)
+    {
+       
+        $berita = Berita::where('seo_url',$url)->first();
+        SEOMeta::setTitle($berita->title);
+        SEOMeta::setDescription(\Str::limit(strip_tags($berita->description),120));
+        SEOMeta::addMeta('article:published_time',$berita->created_at, 'property');
+        SEOMeta::addMeta('article:section','news', 'property');
+        SEOMeta::addKeyword($berita->tags);
+
+        OpenGraph::setDescription(\Str::limit(strip_tags($berita->description),120));
+        OpenGraph::setTitle($berita->title);
+        OpenGraph::setUrl(url('/berita/detail/'.$url));
+        OpenGraph::addProperty('type', 'news');
+        OpenGraph::addProperty('locale', 'id-id');
+        OpenGraph::addProperty('locale:alternate', ['en-us', 'id-id',]);
+
+        OpenGraph::addImage(url('images/'.$berita->thumbnail));
+        OpenGraph::addImage(['url' =>url('images/'.$berita->thumbnail), 'size' => 300]);
+        OpenGraph::addImage(url('images/'.$berita->thumbnail), ['height' => 300, 'width' => 300]);
+        // Namespace URI: http://ogp.me/ns/article#
+        // article
+        OpenGraph::setTitle($berita->title)
+            ->setDescription(\Str::limit(strip_tags($berita->description),120))
+            ->setType('article')
+            ->setArticle([
+                'published_time' => $berita->created_at,
+                'modified_time' => $berita->updated_at,
+                'expiration_time' => '2080-12-30 00:00:00',
+                'author' => $berita->user->name,
+                'tag' => $berita->tags
+            ]);
+
+        return view('detail_berita')->with(['berita' =>$berita]);
+    }
     public function index()
     {
         $berita = Berita::get();
+        
+            
         return view('berita.berita')->with(['berita' => $berita]);
     }
     public function create()

@@ -41,7 +41,7 @@
 <body>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top ">
+    <header id="header" class="fixed-top header-inner-pages">
         <div class="container d-flex align-items-center justify-content-lg-between">
 
             <h1 class="logo me-auto me-lg-0" style="font-size: 20px !important;"> <a href="index.html">Cibunut
@@ -51,10 +51,10 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Aksesoris / Produk</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Berita</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
+                    <li><a class="nav-link scrollto active" href="{{ url('/#hero') }}">Beranda</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url('/#about') }}">Aksesoris / Produk</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url('/#services') }}">Berita</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url('/#contact') }}">Kontak</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -66,7 +66,6 @@
     @yield('content')
 
 
-    <!-- ======= Footer ======= -->
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="footer-top">
@@ -109,7 +108,7 @@
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
-    </footer><!--!-- End Footer -->
+    </footer><!-- End Footer -->
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

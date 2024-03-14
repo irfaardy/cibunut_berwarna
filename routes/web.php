@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'LandingPageController@index');
+Route::get('/berita/detail/{url}', 'BeritaController@show');
+Route::get('/product/detail/{url}', 'ProdukController@show');
 
 Auth::routes();
 
